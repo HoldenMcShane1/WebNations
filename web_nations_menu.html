@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB NATIONS // Tactical Command Dossier</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Courier Prime"', 'Courier', 'monospace'],
+                        stamp: ['"Special Elite"', 'Courier', 'monospace'],
+                    },
+                    colors: {
+                        bunkerDark: '#161915',
+                        bunkerPanel: '#1f241d',
+                        oliveDrab: '#3b4435',
+                        oliveMuted: '#586350',
+                        parchment: '#d6d1c2',
+                        parchmentDim: '#9e998b',
+                        stampRed: '#9e2a2b',
+                        brassGold: '#b89758',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Authentic Typewriter Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Tactical Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #121511;
+            /* Subtle tactical map grid and analog grain */
+            background-image: 
+                linear-gradient(rgba(214, 209, 194, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(214, 209, 194, 0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+            color: #d6d1c2;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .stamp-title {
+            font-family: 'Special Elite', cursive;
+            letter-spacing: 0.08em;
+        }
+
+        /* Physical mechanical button press */
+        .tactical-btn {
+            transition: transform 0.08s ease, background-color 0.15s ease, border-color 0.15s ease;
+            box-shadow: 3px 3px 0px #0b0d0a;
+        }
+        .tactical-btn:hover:not(:disabled) {
+            background-color: #293026;
+            border-color: #9e998b;
+        }
+        .tactical-btn:active:not(:disabled) {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #0b0d0a;
+        }
+
+        /* Selected dossier stamp state */
+        .country-card.selected {
+            background-color: #2c3327;
+            border-color: #b89758;
+            box-shadow: inset 0 0 0 1px #b89758, 3px 3px 0px #0b0d0a;
+        }
+
+        .classified-stamp {
+            border: 2px solid #9e2a2b;
+            color: #9e2a2b;
+            font-family: 'Special Elite', cursive;
+            transform: rotate(-3deg);
+            letter-spacing: 0.12em;
+            opacity: 0.85;
+        }
+
+        .dossier-panel {
+            background-color: #1b1f19;
+            border: 2px solid #3b4435;
+            box-shadow: 6px 6px 0px #0b0d0a;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 overflow-x-hidden">
+
+    <!-- Top Tactical Header -->
+    <header class="w-full max-w-5xl flex flex-wrap items-center justify-between py-3 px-4 bg-[#1b1f19] border-2 border-[#3b4435] mb-6 gap-2">
+        <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 bg-[#2c3327] border border-[#586350] flex items-center justify-center text-[#d6d1c2]">
+                <i class="fa-solid fa-crosshairs text-base"></i>
+            </div>
+            <div>
+                <span class="stamp-title text-lg sm:text-xl text-[#d6d1c2] block leading-none">WEB NATIONS</span>
+                <span class="text-[11px] text-[#9e998b] tracking-widest uppercase">JOINT CHIEFS WAR ROOM // SEC-09</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3 text-xs text-[#9e998b]">
+            <span class="hidden sm:inline border border-[#3b4435] bg-[#141713] px-2.5 py-1">
+                <span class="inline-block w-2 h-2 bg-[#6a8d4e] mr-1.5"></span>COMMS: ACTIVE
+            </span>
+            <span class="border border-[#3b4435] bg-[#141713] px-2.5 py-1 text-[#d6d1c2]">REV 1.4.2</span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-5xl flex-1 flex flex-col items-center justify-center my-auto">
+        
+        <!-- Screen 1: Country Selection Dossier -->
+        <div id="menu-screen" class="w-full dossier-panel p-5 sm:p-8 relative">
+            
+            <!-- Top Dossier File Tab & Stamp -->
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between border-b-2 border-dashed border-[#3b4435] pb-5 mb-6 gap-4">
+                <div>
+                    <div class="text-xs text-[#b89758] uppercase tracking-widest mb-1">FILE NO. 884-WN // GLOBAL THEATER</div>
+                    <h1 class="stamp-title text-3xl sm:text-4xl text-[#d6d1c2] mb-2">WEB NATIONS</h1>
+                    <p class="text-[#9e998b] text-xs sm:text-sm max-w-xl leading-relaxed">
+                        DESIGNATE SOVEREIGN POWER BELOW TO ASSUME SUPREME MILITARY &amp; ECONOMIC COMMAND. ALL ORDERS ARE FINAL UPON DEPLOYMENT.
+                    </p>
+                </div>
+                <div class="self-start sm:self-center classified-stamp px-3 py-1 text-xs sm:text-sm font-bold uppercase select-none shrink-0">
+                    TOP SECRET // EYES ONLY
+                </div>
+            </div>
+
+            <!-- Section Label -->
+            <div class="flex items-center justify-between text-xs text-[#9e998b] uppercase tracking-wider mb-3">
+                <span>[01] AVAILABLE SOVEREIGN POWERS (8)</span>
+                <span id="selection-status-code">STATUS: AWAITING INPUT</span>
+            </div>
+
+            <!-- Country Selection Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mb-7" id="country-grid">
+                <!-- Country buttons injected via JavaScript -->
+            </div>
+
+            <!-- Selected Nation Dispatch Bar & Deploy Button -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between bg-[#141713] border-2 border-[#3b4435] p-4 gap-4">
+                <div class="flex items-center space-x-3.5">
+                    <div id="selected-flag-preview" class="w-14 h-10 bg-[#1f241d] border border-[#586350] flex items-center justify-center shrink-0 overflow-hidden">
+                        <span class="text-xs text-[#9e998b]">NONE</span>
+                    </div>
+                    <div>
+                        <div class="text-[11px] text-[#9e998b] uppercase tracking-widest">DESIGNATED COMMAND</div>
+                        <div id="selected-nation-name" class="stamp-title text-base sm:text-lg text-[#d6d1c2]">NO NATION SELECTED</div>
+                    </div>
+                </div>
+
+                <button id="start-game-btn" disabled onclick="startGame()" class="tactical-btn px-6 py-3.5 bg-[#3b4435] border-2 border-[#586350] text-[#d6d1c2] stamp-title text-sm sm:text-base tracking-wider uppercase opacity-40 cursor-not-allowed flex items-center justify-center">
+                    <span>DEPLOY / START CAMPAIGN</span>
+                    <i class="fa-solid fa-arrow-right ml-2.5 text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Screen 2: War Room Briefing Screen (Hidden by default) -->
+        <div id="game-screen" class="w-full dossier-panel p-5 sm:p-8 relative hidden">
+            
+            <!-- Briefing Header -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-5 border-b-2 border-dashed border-[#3b4435] gap-4 mb-6">
+                <div class="flex items-center space-x-4">
+                    <div id="active-nation-flag" class="w-16 h-11 bg-[#141713] border-2 border-[#586350] flex items-center justify-center overflow-hidden shrink-0">
+                        <!-- SVG flag injected -->
+                    </div>
+                    <div>
+                        <div class="text-xs text-[#b89758] tracking-widest uppercase">ACTIVE SUPREME HEADQUARTERS</div>
+                        <h2 id="active-nation-title" class="stamp-title text-2xl sm:text-3xl text-[#d6d1c2]">United States</h2>
+                    </div>
+                </div>
+                <button onclick="returnToMenu()" class="tactical-btn px-4 py-2 bg-[#252b22] border border-[#586350] text-[#d6d1c2] text-xs uppercase tracking-wider">
+                    <i class="fa-solid fa-rotate-left mr-1.5"></i> REASSIGN NATION
+                </button>
+            </div>
+
+            <!-- Strategic Intelligence Metrics -->
+            <div class="text-xs text-[#9e998b] uppercase tracking-wider mb-3">
+                [02] STRATEGIC ASSET ASSESSMENT
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 mb-7">
+                <div class="bg-[#141713] border border-[#3b4435] p-4">
+                    <div class="text-[#9e998b] text-xs uppercase mb-1.5 border-b border-[#293026] pb-1">
+                        <i class="fa-solid fa-coins text-[#b89758] mr-1.5"></i>TREASURY
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold text-[#d6d1c2]" id="stat-gdp">$24.5T</div>
+                </div>
+                <div class="bg-[#141713] border border-[#3b4435] p-4">
+                    <div class="text-[#9e998b] text-xs uppercase mb-1.5 border-b border-[#293026] pb-1">
+                        <i class="fa-solid fa-shield-halved text-[#8fa876] mr-1.5"></i>MILITARY STR.
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold text-[#8fa876]" id="stat-military">98/100</div>
+                </div>
+                <div class="bg-[#141713] border border-[#3b4435] p-4">
+                    <div class="text-[#9e998b] text-xs uppercase mb-1.5 border-b border-[#293026] pb-1">
+                        <i class="fa-solid fa-radiation text-[#c94a4a] mr-1.5"></i>NUCLEAR ARSENAL
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold text-[#c94a4a]" id="stat-nukes">5,400</div>
+                </div>
+                <div class="bg-[#141713] border border-[#3b4435] p-4">
+                    <div class="text-[#9e998b] text-xs uppercase mb-1.5 border-b border-[#293026] pb-1">
+                        <i class="fa-solid fa-scale-balanced text-[#d6d1c2] mr-1.5"></i>STABILITY
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold text-[#d6d1c2]" id="stat-stability">92%</div>
+                </div>
+            </div>
+
+            <!-- Tactical Operations Dispatch Box -->
+            <div class="bg-[#141713] border-2 border-[#3b4435] p-5 sm:p-6 relative">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <h3 class="stamp-title text-lg text-[#d6d1c2] uppercase">WAR ROOM BRIEFING // IMMEDIATE ORDERS</h3>
+                    <span class="text-xs px-2 py-0.5 bg-[#2c3327] border border-[#586350] text-[#b89758]">DEFCON 3</span>
+                </div>
+                <p class="text-[#9e998b] text-xs sm:text-sm leading-relaxed mb-5">
+                    SATELLITE UPLINK ESTABLISHED. GROUND FORCES AND NAVAL FLEETS AWAIT YOUR DIRECTIVE. INITIATE RECONNAISSANCE OR MOBILIZE BATTALIONS TO SECURE BORDER SECTORS.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="showActionMessage('DISPATCH: RECONNAISSANCE AIRCRAFT LAUNCHED OVER ADJACENT SECTORS.')" class="tactical-btn px-4 py-2.5 bg-[#3b4435] border border-[#6c7a62] text-[#d6d1c2] text-xs uppercase tracking-wider font-bold">
+                        <i class="fa-solid fa-binoculars mr-2"></i>RECON SECTORS
+                    </button>
+                    <button onclick="showActionMessage('DISPATCH: ARMORED DIVISIONS MOBILIZED TO FORWARD OPERATING BASES.')" class="tactical-btn px-4 py-2.5 bg-[#252b22] border border-[#586350] text-[#d6d1c2] text-xs uppercase tracking-wider font-bold">
+                        <i class="fa-solid fa-person-military-rifle mr-2"></i>MOBILIZE FORCES
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Typewriter Teletype Notification Banner -->
+    <div id="toast" class="fixed bottom-5 right-5 max-w-md bg-[#141713] border-2 border-[#b89758] text-[#d6d1c2] px-4 py-3 shadow-[4px_4px_0px_#0b0d0a] transform translate-y-28 opacity-0 transition-all duration-200 z-50 flex items-start space-x-3">
+        <span class="text-[#b89758] font-bold text-xs mt-0.5">[MSG]</span>
+        <span id="toast-message" class="text-xs leading-snug uppercase">SYSTEM READY.</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-between py-3 px-4 border-t border-[#3b4435] text-[11px] text-[#9e998b] mt-6 gap-2">
+        <span>WEB NATIONS COMMAND SYSTEM // UNCLASSIFIED INTERFACE</span>
+        <span>UNAUTHORIZED ACCESS PROHIBITED</span>
+    </footer>
+
+    <!-- JavaScript Logic & Crisp SVG Flag Insignias -->
+    <script>
+        // Crisp custom SVG flags so they render reliably on all OS platforms without emoji inconsistencies
+        const flagSVGs = {
+            us: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="60" height="40" fill="#b22234"/><path d="M0 6h60M0 12h60M0 18h60M0 24h60M0 30h60M0 36h60" stroke="#fff" stroke-width="3"/><rect width="26" height="22" fill="#3c3b6e"/><g fill="#fff"><circle cx="5" cy="5" r="1.2"/><circle cx="13" cy="5" r="1.2"/><circle cx="21" cy="5" r="1.2"/><circle cx="9" cy="11" r="1.2"/><circle cx="17" cy="11" r="1.2"/><circle cx="5" cy="17" r="1.2"/><circle cx="13" cy="17" r="1.2"/><circle cx="21" cy="17" r="1.2"/></g></svg>`,
+            mx: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="20" height="40" x="0" fill="#006847"/><rect width="20" height="40" x="20" fill="#ffffff"/><rect width="20" height="40" x="40" fill="#ce1126"/><circle cx="30" cy="20" r="4" fill="#8c6239"/></svg>`,
+            uk: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="6"/><path d="M0 0L60 40M60 0L0 40" stroke="#c8102e" stroke-width="2.5"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="10"/><path d="M30 0v40M0 20h60" stroke="#c8102e" stroke-width="6"/></svg>`,
+            ca: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="15" height="40" x="0" fill="#d80621"/><rect width="30" height="40" x="15" fill="#ffffff"/><rect width="15" height="40" x="45" fill="#d80621"/><path d="M30 10l2.5 5 5-.5-3 4 2 4-5-1v5h-3v-5l-5 1 2-4-3-4 5 .5z" fill="#d80621"/></svg>`,
+            ru: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="60" height="13.3" y="0" fill="#ffffff"/><rect width="60" height="13.4" y="13.3" fill="#0039a6"/><rect width="60" height="13.3" y="26.7" fill="#d52b1e"/></svg>`,
+            jp: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="60" height="40" fill="#ffffff"/><circle cx="30" cy="20" r="10" fill="#bc002d"/></svg>`,
+            kr: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="60" height="40" fill="#ffffff"/><circle cx="30" cy="20" r="9" fill="#cd2e3a"/><path d="M21 20a9 9 0 0 0 18 0 4.5 4.5 0 0 0-9 0 4.5 4.5 0 0 1-9 0z" fill="#0047a0"/><g stroke="#000" stroke-width="2"><path d="M12 10l4-4M14 12l4-4M44 6l4 4M42 8l4 4M12 30l4 4M14 28l4 4M44 34l4-4M42 32l4-4"/></g></svg>`,
+            kp: `<svg viewBox="0 0 60 40" class="w-full h-full object-cover"><rect width="60" height="40" fill="#024fa2"/><rect width="60" height="26" y="7" fill="#ffffff"/><rect width="60" height="22" y="9" fill="#ed1c27"/><circle cx="20" cy="20" r="7" fill="#ffffff"/><polygon points="20,14 21.8,18.5 26.5,18.5 22.7,21.3 24.1,25.8 20,23 15.9,25.8 17.3,21.3 13.5,18.5 18.2,18.5" fill="#ed1c27"/></svg>`
+        };
+
+        // Playable Nations Dataset
+        const countries = [
+            { id: 'us', code: 'USA', name: 'U.S.', fullName: 'United States', gdp: '$24.5T', military: '98/100', nukes: '5,400', stability: '92%' },
+            { id: 'mx', code: 'MEX', name: 'Mexico', fullName: 'Mexico', gdp: '$1.4T', military: '65/100', nukes: '0', stability: '84%' },
+            { id: 'uk', code: 'GBR', name: 'U.K.', fullName: 'United Kingdom', gdp: '$3.1T', military: '88/100', nukes: '225', stability: '94%' },
+            { id: 'ca', code: 'CAN', name: 'Canada', fullName: 'Canada', gdp: '$2.1T', military: '72/100', nukes: '0', stability: '96%' },
+            { id: 'ru', code: 'RUS', name: 'Russia', fullName: 'Russian Federation', gdp: '$2.2T', military: '95/100', nukes: '5,580', stability: '78%' },
+            { id: 'jp', code: 'JPN', name: 'Japan', fullName: 'Japan', gdp: '$4.2T', military: '85/100', nukes: '0', stability: '97%' },
+            { id: 'kr', code: 'KOR', name: 'South Korea', fullName: 'South Korea', gdp: '$1.8T', military: '90/100', nukes: '0', stability: '91%' },
+            { id: 'kp', code: 'PRK', name: 'North Korea', fullName: 'North Korea', gdp: '$40B', military: '78/100', nukes: '50', stability: '62%' }
+        ];
+
+        let selectedCountryId = null;
+        let toastTimeout = null;
+
+        // Render country dossier buttons
+        function renderCountries() {
+            const grid = document.getElementById('country-grid');
+            grid.innerHTML = '';
+
+            countries.forEach(country => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `country-card tactical-btn flex items-center p-3 bg-[#141713] border-2 border-[#3b4435] text-left cursor-pointer group relative`;
+                btn.dataset.id = country.id;
+                btn.onclick = () => selectCountry(country.id);
+
+                btn.innerHTML = `
+                    <!-- Left Flag Insignia -->
+                    <div class="w-12 h-8 mr-3 border border-[#586350] bg-[#0e100d] shrink-0 overflow-hidden">
+                        ${flagSVGs[country.id]}
+                    </div>
+                    <!-- Country Name & Code in Typewriter Font -->
+                    <div class="overflow-hidden flex-1">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] text-[#9e998b] tracking-widest">[${country.code}]</span>
+                            <span class="stamp-badge hidden text-[10px] text-[#b89758] font-bold">SELECTED</span>
+                        </div>
+                        <div class="stamp-title text-base text-[#d6d1c2] truncate mt-0.5">${country.name}</div>
+                    </div>
+                `;
+                grid.appendChild(btn);
+            });
+        }
+
+        // Select a country and update dossier state
+        function selectCountry(id) {
+            selectedCountryId = id;
+            const country = countries.find(c => c.id === id);
+
+            // Update card styles & stamp indicator
+            document.querySelectorAll('.country-card').forEach(card => {
+                const badge = card.querySelector('.stamp-badge');
+                if (card.dataset.id === id) {
+                    card.classList.add('selected');
+                    if (badge) badge.classList.remove('hidden');
+                } else {
+                    card.classList.remove('selected');
+                    if (badge) badge.classList.add('hidden');
+                }
+            });
+
+            // Update preview bar
+            document.getElementById('selected-flag-preview').innerHTML = flagSVGs[country.id];
+            document.getElementById('selected-nation-name').innerText = `${country.name.toUpperCase()} (${country.code})`;
+            document.getElementById('selection-status-code').innerText = `STATUS: ${country.code} LOCKED`;
+
+            // Enable Deploy button
+            const startBtn = document.getElementById('start-game-btn');
+            startBtn.disabled = false;
+            startBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+            startBtn.classList.add('bg-[#4b5743]', 'border-[#b89758]', 'text-[#ffffff]');
+
+            showActionMessage(`DOSSIER SELECTED: ${country.fullName.toUpperCase()}. READY FOR DEPLOYMENT.`);
+        }
+
+        // Transition to War Room briefing screen
+        function startGame() {
+            if (!selectedCountryId) return;
+            const country = countries.find(c => c.id === selectedCountryId);
+
+            // Populate War Room briefing stats
+            document.getElementById('active-nation-flag').innerHTML = flagSVGs[country.id];
+            document.getElementById('active-nation-title').innerText = country.fullName.toUpperCase();
+            document.getElementById('stat-gdp').innerText = country.gdp;
+            document.getElementById('stat-military').innerText = country.military;
+            document.getElementById('stat-nukes').innerText = country.nukes;
+            document.getElementById('stat-stability').innerText = country.stability;
+
+            // Switch screens
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+
+            showActionMessage(`COMMAND TRANSFERRED TO ${country.fullName.toUpperCase()} HIGH COMMAND.`);
+        }
+
+        // Return to Nation Selection Menu
+        function returnToMenu() {
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('menu-screen').classList.remove('hidden');
+            showActionMessage('RETURNED TO SOVEREIGN NATION SELECTION DOSSIER.');
+        }
+
+        // Teletype notification toast
+        function showActionMessage(msg) {
+            const toast = document.getElementById('toast');
+            const messageEl = document.getElementById('toast-message');
+            messageEl.innerText = msg;
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toast.classList.remove('translate-y-28', 'opacity-0');
+            
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-28', 'opacity-0');
+            }, 3500);
+        }
+
+        window.onload = function() {
+            renderCountries();
+        };
+    </script>
+</body>
+</html>
